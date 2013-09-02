@@ -20,34 +20,37 @@
 
         <Grid.Resources>
             <DataTemplate x:Key="courseTemplate">
-                <Button Tap="OnCourseClick"
-                        BorderThickness="0">
-                    <StackPanel>
-                        <TextBlock TextWrapping="Wrap"
-                                   Text="{Binding Topic.Name}" />
-                        <TextBlock TextWrapping="Wrap"
-                                   HorizontalAlignment="Right"
-                                   Text="{Binding Topic.Instructor}" />
-                        <Grid Height="232"
-                              Width="412"
-                              Margin="0,2,0,0">
-                            <TextBlock Text="Loading image..."
-                                       FontSize="18"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" />
-                            <Image Source="{Binding Topic.SmallIconHover}" />
+                    <StackPanel Tap="OnCourseClick" Margin="0,7,0,7">
+                        <Grid HorizontalAlignment="Left" Height="100" Width="450">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding Topic.SmallIconHover}" Stretch="UniformToFill" Height="100" >
+                            </Image>
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                <TextBlock 
+                                       Text="{Binding Topic.Name}" 
+                                       FontSize="34" FontFamily="Segoe WP SemiLight" VerticalAlignment="Top" LineHeight="34" LineStackingStrategy="BlockLineHeight" Height="40" FontWeight="Normal" />
+                                <TextBlock Text="69% completed" FontSize="17" Foreground="{StaticResource PhoneTextMidContrastBrush}">
+                                </TextBlock>
+                            </StackPanel>
+                            
                         </Grid>
+
                     </StackPanel>
-                </Button>
             </DataTemplate>
         </Grid.Resources>
         
+        
+        
         <controls:Pivot Title="Courses" x:Name="pivot">
-            <controls:PivotItem Header="Active">
+            <controls:PivotItem Header="Active" Margin="24,28,24,0">
                 <ScrollViewer>
                     <Grid>
                         <ItemsControl x:Name="activeCourses"
-                                      ItemTemplate="{StaticResource courseTemplate}" />
+                                      ItemTemplate="{StaticResource courseTemplate}">
+                        </ItemsControl>
                         <TextBlock x:Name="activeCoursesEmptyMessage" 
                                    Visibility="Collapsed"
                                    Text="No active courses"
@@ -58,11 +61,13 @@
                 </ScrollViewer>
             </controls:PivotItem>
 
-            <controls:PivotItem Header="Upcoming">
+            <controls:PivotItem Header="Upcoming" Margin="24,28,24,0">
                 <ScrollViewer>
                     <Grid>
                         <ItemsControl x:Name="upcomingCourses"
-                                      ItemTemplate="{StaticResource courseTemplate}" />
+                                      ItemTemplate="{StaticResource courseTemplate}" >
+
+                        </ItemsControl>
                         <TextBlock x:Name="upcomingCoursesEmptyMessage" 
                                    Visibility="Collapsed"
                                    Text="No upcoming courses"
@@ -73,7 +78,7 @@
                 </ScrollViewer>
             </controls:PivotItem>
 
-            <controls:PivotItem Header="Completed">
+            <controls:PivotItem Header="Completed" Margin="24,28,24,0">
                 <ScrollViewer>
                     <Grid>
                         <ItemsControl x:Name="completedCourses"
@@ -89,11 +94,38 @@
             </controls:PivotItem>
         </controls:Pivot>
 
+<!--        <Grid HorizontalAlignment="Left" Height="90" Width="450" Margin="20,267,-86,339">-->
+<!--            <Grid.ColumnDefinitions>-->
+<!--                <ColumnDefinition Width="90"/>-->
+<!--                <ColumnDefinition Width="360"/>-->
+<!--            </Grid.ColumnDefinitions>-->
+<!--            <Rectangle Grid.Column="0" Fill="#FFCF0000" />-->
+<!--            <StackPanel Grid.Column="1" Margin="10,0,0,0">-->
+<!--                <TextBlock -->
+<!--                    Text="Hello Google Google Google" -->
+<!--                    FontSize="30" FontFamily="Segoe WP Light" VerticalAlignment="Top" LineHeight="30" LineStackingStrategy="BlockLineHeight" Height="35" />-->
+<!--                <TextBlock Text="69% completed" FontSize="17" Foreground="{StaticResource PhoneTextMidContrastBrush}">-->
+<!--                </TextBlock>-->
+<!--            </StackPanel>-->
+<!---->
+<!--        </Grid>-->
+
+<!--        <Canvas Margin="21,166,-21,-166">-->
+<!--            <Rectangle Width="450" Height="253" HorizontalAlignment="Left" Fill="#FFDC0000" />-->
+<!--            <Rectangle Width="450" Height="50" Fill="#7FFFFFFF" Canvas.Top="203" />-->
+<!--            <TextBlock Text="Computational Investing" FontWeight="Light" FontSize="36" Foreground="Black" Canvas.Left="0" Canvas.Top="200" Width="450" LineStackingStrategy="BlockLineHeight" LineHeight="50" Padding="5,0" />-->
+<!--        </Canvas>-->
+
+
+
         <TextBlock x:Name="messageTextBlock" 
                    TextWrapping="Wrap"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
+        
     </Grid>   
+    
+    
  
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Minimized">

@@ -37,7 +37,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.Portable.FSharp.Targets" />
   <ItemGroup>
-    <None Include="packages.config" />
     <Compile Include="..\Coursera.WP7\HtmlAgilityPack.FSharp.fs">
       <Link>HtmlAgilityPack.FSharp.fs</Link>
     </Compile>
@@ -60,6 +59,7 @@
       <Link>Crawler.fs</Link>
     </Compile>
     <None Include="topics.json" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

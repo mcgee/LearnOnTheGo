@@ -60,6 +60,7 @@ namespace LearnOnTheGo
             {
                 App.Crawler.RefreshCourses();
             }
+
             coursesLazyBlock = new LazyBlock<Course[]>(
                 "courses",
                 "No courses",
@@ -143,7 +144,7 @@ namespace LearnOnTheGo
 
         private void OnCourseClick(object sender, RoutedEventArgs e)
         {
-            var course = (Coursera.Course)((Button)sender).DataContext;
+            var course = (Coursera.Course)((StackPanel)sender).DataContext;
             NavigationService.Navigate(new Uri("/CoursePage.xaml?courseId=" + course.Id, UriKind.Relative));
         }
 
